@@ -8,8 +8,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('express-cors');
 var jwt = require('express-jwt');
-var S3 = require('aws-sdk/clients/s3');
+var router = express.Router();
 var app = express();
+var liana = require('forest-express-sequelize');
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.use(logger('dev'));
