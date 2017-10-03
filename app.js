@@ -56,7 +56,7 @@ function updateCast(req, res, next) {
   var s3Bucket = new AWS.S3({ params: { Bucket: process.env.S3_BUCKET }});
 
   // Parse the "data" URL scheme (RFC 2397).
-  var rawData = req.body.data.attributes.pictureUrl;
+  var rawData = req.body.data.attributes.pictureurl;
   var base64Image = rawData.replace(/^data:image\/\w+;base64,/, '');
 
   // Generate a random filename.
@@ -74,7 +74,7 @@ function updateCast(req, res, next) {
     if (err) { return reject(err); }
 
     // Inject the new poster URL to the params.
-    req.body.data.attributes.pictureUrl = response.Location;
+    req.body.data.attributes.pictureurl = response.Location;
 
     // Finally, call the default PUT behavior.
     next();
