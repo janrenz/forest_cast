@@ -27,7 +27,7 @@ app.use(jwt({
   secret: process.env.FOREST_AUTH_SECRET,
   credentialsRequired: false
 }));
-app.use(express.limit('200M'));
+
 fs.readdirSync('./routes').forEach((file) => {
   if (file !== '.gitkeep') {
     app.use('/forest', require('./routes/' + file));
