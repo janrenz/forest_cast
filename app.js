@@ -8,7 +8,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('express-cors');
 var jwt = require('express-jwt');
-
+var S3 = require('aws-sdk/clients/s3');
 var app = express();
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
@@ -40,5 +40,46 @@ modelsDir: __dirname + '/models',
   authSecret: process.env.FOREST_AUTH_SECRET,
 sequelize: require('./models').sequelize
 }));
+
+
+var AWS = require('aws-sdk');
+
+function randomFilename() {
+  return require('crypto').randomBytes(48, function(err, buffer) {
+    var token = buffer.toString('hex');
+  });
+}
+
+function updateCast(req, res, next) {
+  // Create the S3 client.
+  var s3Bucket = new AWS.S3({ params: { Bucket: process.env.S3_BUCKET }});
+
+  // Parse the "data" URL scheme (RFC 2397).
+  var rawData = req.body.data.attributes.pictureUrl;
+  var base64Image = rawData.replace(/^data:image\/\w+;base64,/, '');
+
+  // Generate a random filename.
+  var filename = randomFilename();
+
+  var data = {
+    Key: filename,
+    Body: new Buffer(base64Image, 'base64'),
+    ContentEncoding: 'base64',
+    ACL: 'public-read'
+  };
+
+  // Upload the image.
+  s3Bucket.upload(data, function(err, response) {
+    if (err) { return reject(err); }
+
+    // Inject the new poster URL to the params.
+    req.body.data.attributes.pictureUrl = response.Location;
+
+    // Finally, call the default PUT behavior.
+    next();
+  });
+};
+
+router.put('/forest/casts/:castId', liana.ensureAuthenticated, updateCast);
 
 module.exports = app;
