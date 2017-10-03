@@ -1,23 +1,26 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  var Model = sequelize.define('cast', {
-    vorname: {
-      type: DataTypes.STRING,
-    },
-    nachname: {
-      type: DataTypes.STRING,
-    },
+  var Model = sequelize.define('casts', {
     created_at: {
       type: DataTypes.DATE,
     },
-    email: {
+    updated_at: {
+      type: DataTypes.DATE,
+    },
+    picture: {
+      type: DataTypes.STRING,
+    },
+    first_name: {
+      type: DataTypes.STRING,
+    },
+    last_name: {
       type: DataTypes.STRING,
     },
   }, {
-    tableName: 'cast',
-    
-    timestamps: false,
+    tableName: 'casts',
+    underscored: true,
+
     schema: process.env.DATABASE_SCHEMA,
   });
 
@@ -26,4 +29,3 @@ module.exports = (sequelize, DataTypes) => {
 
   return Model;
 };
-
