@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     updated_at: {
       type: DataTypes.DATE,
     },
-    picture: {
+    pictureUrl: {
       type: DataTypes.STRING,
     },
     first_name: {
