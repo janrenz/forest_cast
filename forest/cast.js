@@ -6,6 +6,7 @@ var moment = require('moment');
 
 Liana.collection('casts', {
   fields: [{
+    // this will not allow filtering, so maybe we want to calculate this in the db later   
     field: 'alter_auto',
     type: 'String',
     get: function (object) {
