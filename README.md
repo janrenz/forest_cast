@@ -7,3 +7,4 @@ TODO
 [ ] Videos
 [ ] Anbindung Newsletter System 
 [ ] Anbindung Web Formular
+[ ] Created und Updated_at Timestamps in DB aufnehmen
