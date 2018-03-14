@@ -47,7 +47,7 @@ var cron = require('node-cron');
  
 cron.schedule('*/10 * * * *', function(){
   //running a task every ten minutes
-  Cast.findAll().then(casts => {
+  Casts.findAll().then(casts => {
     casts.forEach(function (instance) {
       instance.updateAttributes({ age: moment().diff(moment(instance.geburtsdatum, "DD.MM.YYYY"), 'years', false)});
     });
