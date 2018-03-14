@@ -4,7 +4,7 @@ var moment = require('moment');
 
 // Be careful: Javascript months start at 0 (so zero stands for january) 
 
-Liana.collection('cast', {
+Liana.collection('casts', {
   fields: [{
     field: 'alter_auto',
     type: 'String',
