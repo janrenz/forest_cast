@@ -1,11 +1,8 @@
 'use strict';
 var Liana = require('forest-express-sequelize');
-var ageCalculator = require('age-calculator');
 var moment = require('moment');
-let {AgeFromDateString, AgeFromDate} = require('age-calculator');
 
 // Be careful: Javascript months start at 0 (so zero stands for january) 
-
 
 Liana.collection('cast', {
   fields: [{
