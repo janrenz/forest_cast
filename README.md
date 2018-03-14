@@ -6,3 +6,4 @@ TODO
 [ ] Alte Bilder importieren
 [ ] Videos
 [ ] Anbindung Newsletter System 
+[ ] Anbindung Web Formular
