@@ -9,3 +9,4 @@ TODO
 [ ] Anbindung Web Formular
 [ ] Created und Updated_at Timestamps in DB aufnehmen
 [ ] Daten bereinigen 
+[ ] Alter als dynamisches Feld
