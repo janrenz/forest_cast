@@ -11,6 +11,7 @@ var jwt = require('express-jwt');
 var router = express.Router();
 var app = express();
 var liana = require('forest-express-sequelize');
+var moment = require('moment');
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
@@ -42,6 +43,16 @@ modelsDir: __dirname + '/models',
 sequelize: require('./models').sequelize
 }));
 
+var cron = require('node-cron');
+ 
+cron.schedule('*/10 * * * *', function(){
+  //running a task every ten minutes
+  Cast.findAll().then(casts => {
+    casts.forEach(function (instance) {
+      instance.updateAttributes({ age: moment().diff(moment(instance.geburtsdatum, "DD.MM.YYYY"), 'years', false)});
+    });
+  })
+});
 
 var AWS = require('aws-sdk');
 
