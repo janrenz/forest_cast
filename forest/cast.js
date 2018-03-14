@@ -10,7 +10,7 @@ Liana.collection('casts', {
     type: 'String',
     get: function (object) {
       try {
-        return moment().diff(moment(object.geburtsdatum, "MM.DD.YYYY"), 'years', false);
+        return moment().diff(moment(object.geburtsdatum, "DD.MM.YYYY"), 'years', false);
       } catch (error) {
         return '';
       }
