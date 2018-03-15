@@ -12,7 +12,7 @@ var router = express.Router();
 var app = express();
 var liana = require('forest-express-sequelize');
 var moment = require('moment');
-var models = require('models');
+var models = require('./models');
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
