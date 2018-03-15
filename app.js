@@ -12,6 +12,7 @@ var router = express.Router();
 var app = express();
 var liana = require('forest-express-sequelize');
 var moment = require('moment');
+var models = require('models');
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
@@ -47,7 +48,7 @@ var cron = require('node-cron');
  
 cron.schedule('*/10 * * * *', function(){
   //running a task every ten minutes
-  Casts.findAll().then(casts => {
+  models.cast.findAll().then(casts => {
     casts.forEach(function (instance) {
       instance.updateAttributes({ age: moment().diff(moment(instance.geburtsdatum, "DD.MM.YYYY"), 'years', false)});
     });
