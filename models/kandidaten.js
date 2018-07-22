@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  var Model = sequelize.define('kandidaten', {
+  var Model = sequelize.define('cast', {
     'ext_id': {
       type: DataTypes.INTEGER,
     },
@@ -23,8 +23,17 @@ module.exports = (sequelize, DataTypes) => {
     'Telefon Privat': {
       type: DataTypes.STRING,
     },
+    'Fernseherfahrung': {
+      type: DataTypes.STRING,
+    },
+    'Bearbeiter': {
+      type: DataTypes.STRING,
+    },
     'Anz Kinder': {
       type: DataTypes.INTEGER,
+    },
+    'Notizen Kinder': {
+      type: DataTypes.STRING,
     },
     'Straße': {
       type: DataTypes.STRING,
