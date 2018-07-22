@@ -132,10 +132,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
     },
   }, {
-    tableName: 'kandidaten',
+    tableName: 'casts',
     underscored: true,
     timestamps: true,
-    
   });
 
   Model.associate = (models) => {
