@@ -83,6 +83,42 @@ module.exports = (sequelize, DataTypes) => {
     'Streetcaster': {
       type: DataTypes.STRING,
     },
+    'bild_1': {
+      type: DataTypes.STRING,
+    },
+    'bild_2': {
+      type: DataTypes.STRING,
+    },
+    'bild_3': {
+      type: DataTypes.STRING,
+    },
+    'bild_4': {
+      type: DataTypes.STRING,
+    },
+    'bild_5': {
+      type: DataTypes.STRING,
+    },
+    'bild_6': {
+      type: DataTypes.STRING,
+    },
+    'bild_7': {
+      type: DataTypes.STRING,
+    },
+    'bild_8': {
+      type: DataTypes.STRING,
+    },
+    'video_1': {
+      type: DataTypes.STRING,
+    },
+    'video_2': {
+      type: DataTypes.STRING,
+    },
+    'video_3': {
+      type: DataTypes.STRING,
+    },
+    'video_4': {
+      type: DataTypes.STRING,
+    },
     'Bemerkung': {
       type: DataTypes.STRING,
     },
