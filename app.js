@@ -13,41 +13,6 @@ var app = express();
 var liana = require('forest-express-sequelize');
 var moment = require('moment');
 
-
-
-function updateKandidat(req, res, next) {
-  console.log("UPDATE");
-  var s3Bucket = new AWS.S3({ params: {  accessKeyId:  process.env.S3_ACCESS_KEY_ID, secretAccessKey: process.env.S3_SECRET_ACCESS_KEY } });
-  // Parse the "data" URL scheme (RFC 2397).
-  var rawData1 = req.body.data.attributes.bild_1;
-  if (rawData1){
-    var base64Image = rawData1.replace(/^data:image\/\w+;base64,/, '');
-    var filename = randomFilename();
-    var data = {
-      Key: filename,
-      Body: new Buffer(base64Image, 'base64'),
-      ContentEncoding: 'base64',
-      ACL: 'public-read'
-    };
-  
-    s3Bucket.upload(data, function (err, response) {
-      console.log('uploaded');
-      if (err) { return reject(err); }
-      console.log('response.Location');
-      // Inject the new poster URL to the params.
-      req.body.data.attributes.bild_1 = response.Location;
-      // Finally, call the default PUT behavior.
-      next();
-    });
-  }
-};
-
-//displayRoutes(app);
-router.put('/forest/kandidaten/:id', liana.ensureAuthenticated, updateKandidat);
-router.put('/forest/kandidaten/:kandidatId', liana.ensureAuthenticated, updateKandidat);
-router.put('/forest/kandidaten/:kandidatenId', liana.ensureAuthenticated, updateKandidat);
-
-
 var models = require('./models');
 
 app.use(bodyParser.json({ limit: '50mb' }));
@@ -70,6 +35,12 @@ app.use(jwt({
 fs.readdirSync('./routes').forEach((file) => {
   if (file !== '.gitkeep') {
     app.use('/forest', require('./routes/' + file));
+  }
+});
+
+fs.readdirSync('./decorators/routes').forEach((file) => {
+  if (file[0] !== '.') {
+    app.use('/forest', require(`./decorators/routes/${file}`));
   }
 });
 
