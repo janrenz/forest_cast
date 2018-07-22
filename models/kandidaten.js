@@ -1,102 +1,96 @@
 'use strict';
 
 module.exports = (sequelize, DataTypes) => {
-  var Model = sequelize.define('casts', {
-    first_name: {
-      type: DataTypes.STRING,
-    },
-    last_name: {
-      type: DataTypes.STRING,
-    },
-    castingvideo: {
-      type: DataTypes.STRING,
-    },
-    email: {
-      type: DataTypes.STRING,
-    },
-    telefon_mobil: {
-      type: DataTypes.STRING,
-    },
-    telefon_privat: {
-      type: DataTypes.STRING,
-    },
-    kinder: {
+  var Model = sequelize.define('kandidaten', {
+    'ext_id': {
       type: DataTypes.INTEGER,
     },
-    strasse: {
+    'Vorname': {
       type: DataTypes.STRING,
     },
-    plz: {
+    'Nachname': {
       type: DataTypes.STRING,
     },
-    ort: {
+    'Castingvideo vorhanden': {
       type: DataTypes.STRING,
     },
-    alter: {
+    'E_Mail': {
       type: DataTypes.STRING,
     },
-    geburtsdatum: {
+    'Telefon Mobil': {
       type: DataTypes.STRING,
     },
-    nationalitaet: {
+    'Telefon Privat': {
       type: DataTypes.STRING,
     },
-    telefon_arbeit: {
-      type: DataTypes.STRING,
-    },
-    fax: {
-      type: DataTypes.STRING,
-    },
-    groesse_cm: {
+    'Anz Kinder': {
       type: DataTypes.INTEGER,
     },
-    gewicht_kg: {
+    'Straße': {
+      type: DataTypes.STRING,
+    },
+    'PLZ': {
       type: DataTypes.INTEGER,
     },
-    familienstand: {
+    'Ort': {
       type: DataTypes.STRING,
     },
-    beruf: {
-      type: DataTypes.STRING,
+    'Alter': {
+      type: DataTypes.INTEGER,
     },
-    taetigkeit: {
-      type: DataTypes.STRING,
-    },
-    geschlecht: {
-      type: DataTypes.STRING,
-    },
-    kandidat: {
-      type: DataTypes.STRING,
-    },
-    casting_ort: {
-      type: DataTypes.STRING,
-    },
-    casting: {
-      type: DataTypes.STRING,
-    },
-    recherche: {
-      type: DataTypes.STRING,
-    },
-    streetcaster: {
-      type: DataTypes.STRING,
-    },
-    notizen: {
-      type: DataTypes.STRING,
-    },
-    created_at: {
+    'Geburtsdatum': {
       type: DataTypes.DATE,
     },
-    updated_at: {
-      type: DataTypes.DATE,
+    'Nationalität': {
+      type: DataTypes.STRING,
     },
-    pictureurl: {
+    'Telefon Arbeit': {
+      type: DataTypes.STRING,
+    },
+    'Fax': {
+      type: DataTypes.STRING,
+    },
+    'Groeße in cm': {
+      type: DataTypes.INTEGER,
+    },
+    'Gewicht in kg': {
+      type: DataTypes.INTEGER,
+    },
+    'Familienstand': {
+      type: DataTypes.STRING,
+    },
+    'Beruf Ausbildung Studium': {
+      type: DataTypes.STRING,
+    },
+    'Derzeitige Tätigkeit': {
+      type: DataTypes.STRING,
+    },
+    'Geschlecht': {
+      type: DataTypes.STRING,
+    },
+    'Kandidat': {
+      type: DataTypes.STRING,
+    },
+    'Castingort': {
+      type: DataTypes.STRING,
+    },
+    'Casting': {
+      type: DataTypes.STRING,
+    },
+    'Recherche': {
+      type: DataTypes.STRING,
+    },
+    'Streetcaster': {
+      type: DataTypes.STRING,
+    },
+    'Bemerkung': {
       type: DataTypes.STRING,
     },
   }, {
-    tableName: 'casts',
+    tableName: 'kandidaten',
     underscored: true,
+    timestamps: true,
     
-    schema: process.env.DATABASE_SCHEMA,
   });
 
   Model.associate = (models) => {
